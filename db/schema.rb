@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413175531) do
+ActiveRecord::Schema.define(version: 20150413180915) do
+
+  create_table "contact_shares", force: true do |t|
+    t.integer  "contact_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contact_shares", ["contact_id", "user_id"], name: "index_contact_shares_on_contact_id_and_user_id", unique: true
+
+  create_table "contacts", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "email",      null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contacts", ["user_id", "email"], name: "index_contacts_on_user_id_and_email", unique: true
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
