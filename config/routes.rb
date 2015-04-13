@@ -1,7 +1,14 @@
 Routes::Application.routes.draw do
   resources :users, only: [
-      :create, :destroy, :index, :show, :update
-      ]
+    :create,
+    :destroy,
+    :index,
+    :show,
+    :update
+      ] do
+      resources :contacts, only: :index
+  end
+
   resources :contacts, only: [
       :create, :destroy, :show, :update
       ]
@@ -9,10 +16,6 @@ Routes::Application.routes.draw do
   resources :contact_shares, only: [
       :create, :destroy
       ]
-
-  resources :users do
-    resources :contacts, only: :index
-  end
 
   # get 'users', to: 'users#index'
   # post 'users', to: 'users#index'

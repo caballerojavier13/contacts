@@ -13,7 +13,7 @@ class ContactSharesController < ApplicationController
 
   def destroy
     contact_share = ContactShare.find(params[:id])
-    contact_share.destroy
+    contact_share.destroy!
 
     render json: contact_share
   end
