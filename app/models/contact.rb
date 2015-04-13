@@ -20,4 +20,8 @@ class Contact < ActiveRecord::Base
   has_many :received_comments,
     as: :commentable,
     class_name: 'Comment'
+
+  has_many :favorers,
+    as: :favorable,
+    class_name: "Favorite"
 end

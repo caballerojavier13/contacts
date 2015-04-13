@@ -22,4 +22,9 @@ class User < ActiveRecord::Base
     class_name: "Comment",
     foreign_key: :commenter_id,
     primary_key: :id
+
+  has_many :favorites,
+    class_name: "Favorite",
+    foreign_key: :favorer_id,
+    primary_key: :id
 end

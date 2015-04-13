@@ -9,4 +9,7 @@ class ContactShare < ActiveRecord::Base
     foreign_key: :contact_id,
     primary_key: :id
 
+  has_many :favorers,
+    as: :favorable,
+    class_name: "Favorite"
 end

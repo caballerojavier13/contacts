@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150413212531) do
   create_table "favorites", force: true do |t|
     t.string   "favorable_type"
     t.integer  "favorable_id"
-    t.integer  "favorer"
+    t.integer  "favorer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
