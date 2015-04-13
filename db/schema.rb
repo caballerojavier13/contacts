@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413180915) do
+ActiveRecord::Schema.define(version: 20150413212531) do
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "commenter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contact_shares", force: true do |t|
     t.integer  "contact_id", null: false
@@ -31,6 +40,14 @@ ActiveRecord::Schema.define(version: 20150413180915) do
   end
 
   add_index "contacts", ["user_id", "email"], name: "index_contacts_on_user_id_and_email", unique: true
+
+  create_table "favorites", force: true do |t|
+    t.string   "favorable_type"
+    t.integer  "favorable_id"
+    t.integer  "favorer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

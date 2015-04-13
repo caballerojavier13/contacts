@@ -16,4 +16,8 @@ class Contact < ActiveRecord::Base
     primary_key: :id
 
   has_many :shared_users, through: :contact_shares, source: :user
+
+  has_many :received_comments,
+    as: :commentable,
+    class_name: 'Comment'
 end

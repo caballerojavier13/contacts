@@ -7,11 +7,14 @@ Routes::Application.routes.draw do
     :update
       ] do
       resources :contacts, only: :index
+      resources :comments, only: [:index, :create]
   end
 
   resources :contacts, only: [
       :create, :destroy, :show, :update
-      ]
+      ] do
+      resources :comments, only: [:index, :create]  
+  end
 
   resources :contact_shares, only: [
       :create, :destroy
